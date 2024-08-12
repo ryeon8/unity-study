@@ -5,7 +5,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
+    [SerializeField]
+    private GameObject coin;
     private float minY = -7f;
+    [SerializeField]
     private float hp = 1f;
 
     // Start is called before the first frame update
@@ -34,6 +37,7 @@ public class Enemy : MonoBehaviour
             if (hp <= 0)
             {
                 Destroy(gameObject);
+                Instantiate(coin, transform.position, Quaternion.identity);
             }
 
             Destroy(other.gameObject); // 쓰레기와 충돌한 미사일 객체 제거.

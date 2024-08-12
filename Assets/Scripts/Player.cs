@@ -49,7 +49,6 @@ public class Player : MonoBehaviour
 
         // 미사일 쏘기
         Shoot();
-
     }
 
     void Shoot()
@@ -59,6 +58,15 @@ public class Player : MonoBehaviour
             Instantiate(weapon, shootTransform.position, Quaternion.identity);
             lastShotTime = Time.time; // Time.time: 게임이 시작된 이후 현재까지의 시간.
         }
+    }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Debug.Log("game over");
+            Destroy(gameObject);
+
+        }
     }
 }
